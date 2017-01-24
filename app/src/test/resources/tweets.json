@@ -1,0 +1,22 @@
+[
+    {
+      "id" : "00001",
+      "text" : "Sample Tweet 1",
+      "timestamp" : 1485294636
+    },
+    {
+      "id" : "00002",
+      "text" : "Sample Tweet 2",
+      "timestamp" : 1485294672
+    },
+    {
+      "id" : "00003",
+      "text" : "Sample Tweet 3",
+      "timestamp" : 1485394680
+    },
+    {
+      "id" : "00004",
+      "text" : "Sample Tweet 4",
+      "timestamp" : 1485394687
+    }
+]
