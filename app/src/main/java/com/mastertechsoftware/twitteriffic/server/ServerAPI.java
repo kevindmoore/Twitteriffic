@@ -1,5 +1,7 @@
 package com.mastertechsoftware.twitteriffic.server;
 
+import com.mastertechsoftware.tasker.DefaultTask;
+import com.mastertechsoftware.tasker.Tasker;
 import com.mastertechsoftware.twitteriffic.models.Login;
 import com.mastertechsoftware.twitteriffic.models.Tweet;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public class ServerAPI {
 	public static final String USERNAME = "test";
 	public static final String PASSWORD = "password";
+	public static final int SLEEP_TIME = 3000;
 	private TweetProvider tweetProvider;
 
 	/**
@@ -27,28 +30,60 @@ public class ServerAPI {
 	 * @param login
 	 * @param callback
 	 */
-	public void login(Login login, ServerResponseCallback<Login> callback) {
-		if (USERNAME.equalsIgnoreCase(login.getUsername()) && PASSWORD.equalsIgnoreCase(login.getPassword())) {
-			callback.onSuccess(new Response<Login>(login));
-		} else {
-			callback.onFailure(new Response<Login>("Invalid Username or password"));
-		}
+	public void login(final Login login, final ServerResponseCallback<Login> callback) {
+		// Simulate Network call
+		Tasker.create().addTask(new DefaultTask() {
+			@Override
+			public Object run() {
+				try {
+					Thread.sleep(SLEEP_TIME);
+				} catch (InterruptedException e) {
+				}
+				return null;
+			}
+		}).addUITask(new DefaultTask() {
+			@Override
+			public Object run() {
+				if (USERNAME.equalsIgnoreCase(login.getUsername()) && PASSWORD.equalsIgnoreCase(login.getPassword())) {
+					callback.onSuccess(new Response<Login>(login));
+				} else {
+					callback.onFailure(new Response<Login>("Invalid Username or password"));
+				}
+				return null;
+			}
+		}).run();
 	}
 
 	/**
 	 * Get the full list of tweets.
 	 * @param callback
 	 */
-	public void getTweets(ServerResponseCallback<List<Tweet>> callback) {
+	public void getTweets(final ServerResponseCallback<List<Tweet>> callback) {
 		if (tweetProvider == null) {
 			throw new IllegalStateException("TweetProvider not provided");
 		}
-		final List<Tweet> tweets = tweetProvider.getTweets();
-		if (tweets == null) {
-			callback.onFailure(new Response<List<Tweet>>("Tweets not found"));
-		} else {
-			callback.onSuccess(new Response<List<Tweet>>(tweets));
-		}
+		// Simulate Network call
+		Tasker.create().addTask(new DefaultTask() {
+			@Override
+			public Object run() {
+				try {
+					Thread.sleep(SLEEP_TIME);
+				} catch (InterruptedException e) {
+				}
+				final List<Tweet> tweets = tweetProvider.getTweets();
+				return tweets;
+			}
+		}).addUITask(new DefaultTask() {
+			@Override
+			public Object run() {
+				if (getPreviousResult() == null) {
+					callback.onFailure(new Response<List<Tweet>>("Tweets not found"));
+				} else {
+					callback.onSuccess(new Response<List<Tweet>>((List<Tweet>)getPreviousResult()));
+				}
+				return null;
+			}
+		}).run();
 	}
 
 	/**
@@ -56,17 +91,32 @@ public class ServerAPI {
 	 * @param timestamp
 	 * @param callback
 	 */
-	public void getTweets(long timestamp, ServerResponseCallback<List<Tweet>> callback) {
+	public void getTweets(final long timestamp, final ServerResponseCallback<List<Tweet>> callback) {
 		if (tweetProvider == null) {
 			throw new IllegalStateException("TweetProvider not provided");
 		}
-		final List<Tweet> tweets = tweetProvider.getTweets(timestamp);
-		if (tweets == null) {
-			callback.onFailure(new Response<List<Tweet>>("Tweets not found"));
-		} else {
-			callback.onSuccess(new Response<List<Tweet>>(tweets));
-		}
-
+		// Simulate Network call
+		Tasker.create().addTask(new DefaultTask() {
+			@Override
+			public Object run() {
+				try {
+					Thread.sleep(SLEEP_TIME);
+				} catch (InterruptedException e) {
+				}
+				final List<Tweet> tweets = tweetProvider.getTweets(timestamp);
+				return tweets;
+			}
+		}).addUITask(new DefaultTask() {
+			@Override
+			public Object run() {
+				if (getPreviousResult() == null) {
+					callback.onFailure(new Response<List<Tweet>>("Tweets not found"));
+				} else {
+					callback.onSuccess(new Response<List<Tweet>>((List<Tweet>)getPreviousResult()));
+				}
+				return null;
+			}
+		}).run();
 	}
 
 
@@ -75,15 +125,31 @@ public class ServerAPI {
 	 * @param tweet
 	 * @param callback
 	 */
-	public void postTweet(Tweet tweet, ServerResponseCallback<Tweet> callback) {
+	public void postTweet(final Tweet tweet, final ServerResponseCallback<Tweet> callback) {
 		if (tweetProvider == null) {
 			throw new IllegalStateException("TweetProvider not provided");
 		}
-		if (tweetProvider.postTweet(tweet)) {
-			callback.onSuccess(new Response<Tweet>(tweet));
-		} else {
-			callback.onFailure(new Response<Tweet>("Could not post tweet"));
-		}
+		// Simulate Network call
+		Tasker.create().addTask(new DefaultTask() {
+			@Override
+			public Object run() {
+				try {
+					Thread.sleep(SLEEP_TIME);
+				} catch (InterruptedException e) {
+				}
+				return tweetProvider.postTweet(tweet);
+			}
+		}).addUITask(new DefaultTask() {
+			@Override
+			public Object run() {
+				if (((Boolean)getPreviousResult())) {
+					callback.onSuccess(new Response<Tweet>(tweet));
+				} else {
+					callback.onFailure(new Response<Tweet>("Could not post tweet"));
+				}
+				return null;
+			}
+		}).run();
 
 	}
 }

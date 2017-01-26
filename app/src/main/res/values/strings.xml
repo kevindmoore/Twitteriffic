@@ -8,12 +8,29 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_username">This username is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for
-        providing email completions."
+    <string name="invalid_username_password">Username or password is invalid
     </string>
     <string name="prompt_username">User name</string>
+    <string name="log_out">Log Out</string>
+    <string name="post">Post</string>
+    <string name="clear_data">Clear Data</string>
+    <string-array name="resources">
+        <item>How are you?</item>
+        <item>I am fine</item>
+        <item>Do you like my tweet?</item>
+        <item>How\'s the weather</item>
+        <item>Where do you live?</item>
+        <item>What do you do?</item>
+        <item>Where do you work?</item>
+        <item>I\'m sorry, I don\'t understand you Dave</item>
+        <item>Opening the main hatches</item>
+        <item>Have you been here before?</item>
+        <item>Glad you are back</item>
+        <item>Come again?</item>
+        <item>What do you mean?</item>
+    </string-array>
 </resources>

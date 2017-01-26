@@ -1,22 +1,32 @@
 [
   {
-    "id" : "00001",
     "text" : "Sample Tweet 1",
+    "senderName" : "Sam",
+    "recipientName" : "test",
     "timestamp" : 1485294636
   },
   {
-    "id" : "00002",
     "text" : "Sample Tweet 2",
-    "timestamp" : 1485294672
-  },
-  {
-    "id" : "00003",
-    "text" : "Sample Tweet 3",
+    "senderName" : "test",
+    "recipientName" : "Fred",
     "timestamp" : 1485294680
   },
   {
-    "id" : "00004",
+    "text" : "Sample Tweet 3",
+    "senderName" : "Sue",
+    "recipientName" : "test",
+    "timestamp" : 1485294672
+  },
+  {
     "text" : "Sample Tweet 4",
-    "timestamp" : 1485294687
+    "senderName" : "Luke",
+    "recipientName" : "test",
+    "timestamp" : 1485394680
+  },
+  {
+    "text" : "Sample Tweet 5",
+    "senderName" : "test",
+    "recipientName" : "Tina",
+    "timestamp" : 1485394687
   }
 ]

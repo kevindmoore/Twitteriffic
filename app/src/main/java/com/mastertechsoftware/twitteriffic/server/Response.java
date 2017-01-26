@@ -8,11 +8,19 @@ public class Response<T> {
 	private T data;
 	private boolean isSuccessful;
 
+	/**
+	 * Constructor with a successful result
+	 * @param data
+	 */
 	public Response(T data) {
 		this.data = data;
 		isSuccessful = true;
 	}
 
+	/**
+	 * Constructor with the error
+	 * @param error
+	 */
 	public Response(String error) {
 		this.error = error;
 		isSuccessful = false;

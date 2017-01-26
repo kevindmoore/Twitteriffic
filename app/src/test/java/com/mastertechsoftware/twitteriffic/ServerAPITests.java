@@ -79,7 +79,7 @@ public class ServerAPITests {
 		serverAPI.getTweets(new ServerResponseCallback<List<Tweet>>() {
 			@Override
 			public void onSuccess(Response<List<Tweet>> response) {
-				assertEquals(4, response.getData().size());
+				assertEquals(5, response.getData().size());
 			}
 
 			@Override
@@ -106,7 +106,7 @@ public class ServerAPITests {
 
 	@Test
 	public void postTweetSuccess() {
-		serverAPI.postTweet(new Tweet("00005", "Sample Tweet 5"), new ServerResponseCallback<Tweet>() {
+		serverAPI.postTweet(new Tweet("Sample Tweet 5"), new ServerResponseCallback<Tweet>() {
 			@Override
 			public void onSuccess(Response<Tweet> response) {
 				assertTrue("Post failed", response.isSuccessful());

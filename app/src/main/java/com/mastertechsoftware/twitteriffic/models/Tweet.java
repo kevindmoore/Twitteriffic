@@ -1,29 +1,23 @@
 package com.mastertechsoftware.twitteriffic.models;
 
+import com.mastertechsoftware.easysqllibrary.sql.DefaultReflectTable;
+
 /**
  * Model for a Tweet
  */
-public class Tweet {
-	private String id;
+public class Tweet extends DefaultReflectTable {
+	private String senderName;
+	private String recipientName;
 	private String text;
 	private long timestamp;
 
 	public Tweet() {
 	}
 
-	public Tweet(String id, String text) {
-		this.id = id;
+	public Tweet(String text) {
 		this.text = text;
-		timestamp = System.currentTimeMillis();
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getText() {
 		return text;
@@ -39,5 +33,21 @@ public class Tweet {
 
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public String getRecipientName() {
+		return recipientName;
+	}
+
+	public void setRecipientName(String recipientName) {
+		this.recipientName = recipientName;
+	}
+
+	public String getSenderName() {
+		return senderName;
+	}
+
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
 	}
 }
